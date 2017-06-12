@@ -31,6 +31,10 @@ iframe {
   text-align: center;
 }
 
+.align-right {
+  text-align: right !important;
+}
+
 .align-left {
   text-align: left !important;
 }

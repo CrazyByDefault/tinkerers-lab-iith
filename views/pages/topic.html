@@ -1,7 +1,7 @@
 <section class="module-medium">
 	<div class="page">
 		<div class="container">
-			<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/trix/0.9.2/trix.css">
+			<link rel="stylesheet" type="text/css" href="assets/css/trix.css">
 			<!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script> -->
 			<script src="//cdnjs.cloudflare.com/ajax/libs/trix/0.9.2/trix.js"></script>
 			<script src="dist/angular-trix.min.js"></script>
@@ -11,28 +11,32 @@
 				</div>
 				<div class="col-sm-1 et-icons">
 					<!-- <span class="box1" title="Create new thread"><span class="icon-pencil" aria-hidden="true"></span></span> -->
-					<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+					<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Create Thread</button>
 				</div>
 			</div>
 
 			<div id="myModal" class="modal fade" role="dialog">
-			  <div class="modal-dialog">
+				<div class="modal-dialog">
 
-			    <!-- Modal content-->
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal">&times;</button>
-			        <h4 class="modal-title">Modal Header</h4>
-			      </div>
-			      <div class="modal-body">
-			        <p>Some text in the modal.</p>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			      </div>
-			    </div>
+					<!-- Modal content-->
+					<div class="modal-content" style="">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title font-alt">Create a new thread</h4>
+						</div>
+						<div class="modal-body">
+							<form ng-submit="createThread(thread)">
+								<input type="text" placeholder=" Thread title" ng-model="thread.title" class="mb-10">
+								<trix-editor angular-trix ng-model="thread.content" class="trix-content"></trix-editor>
+								<button type="submit" class="btn btn-info btn-lg mt-10">Create!</button>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
 
-			  </div>
+				</div>
 			</div>
 
 
@@ -55,12 +59,4 @@
 					</li>
 				</ul> -->
 			</div>
-			<h2 class="font-alt">Create a new thread</h2>
-			<form ng-submit="createThread(thread)">
-				<input type="text" placeholder="Post title!" ng-model="thread.title">
-				<trix-editor angular-trix ng-model="thread.content" class="trix-content"></trix-editor>
-				<button type="submit">Create Post</button>
-			</form>
-		</div>
-	</div>
-</section>
+		</section>
