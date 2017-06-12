@@ -22,24 +22,30 @@ if (Blogs.find().count() === 0) {
     _.each(
         [{
             name: 'Placeholder 99',
-            author: 'Tom'
+            author: 'Tom',
+            content: 'Lorem <h1>ipsum</h1> dolor sit amet, consectetur adipiscing elit. Nullam cursus mi tortor, non dignissim turpis porttitor quis. Fusce lobortis justo vel ligula vehicula suscipit. Nunc semper, dolor ut pulvinar tincidunt, lorem nisi ullamcorper nibh, ac commodo massa nisi vitae ligula. Suspendisse quis tempus nulla. Ut ullamcorper, enim at consequat dictum, augue tellus mollis justo, id dignissim augue libero sit amet dui. Aenean consequat justo lorem, sit amet posuere arcu feugiat ac. Duis tincidunt placerat tortor id posuere. Aenean pulvinar ultricies risus ac suscipit. Suspendisse commodo libero et facilisis maximus.nterdum et malesuada fames ac ante ipsum primis in faucibus. Duis nec suscipit lectus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec massa dolor, facilisis nec justo in, aliquet viverra lacus. Sed quis molestie libero. Donec ac leo ac enim vulputate cursus non nec eros. In tempor ex a dui fermentum fringilla.Nullam sit amet neque efficitur dui tincidunt tempor. Phasellus hendrerit tempor turpis, eu rhoncus nisl imperdiet et. Praesent at venenatis neque. Nullam a mauris lorem. Cras pretium massa tellus, sit amet semper metus tempor eu. Ut tincidunt venenatis tincidunt. Nam luctus euismod neque.'
         }, {
             name: 'Placeholder 2',
-            author: 'Dick'
+            author: 'Dick',
+            content: 'Lorem <h1>ipsum</h1> dolor sit amet, consectetur adipiscing elit. Nullam cursus mi tortor, non dignissim turpis porttitor quis. Fusce lobortis justo vel ligula vehicula suscipit. Nunc semper, dolor ut pulvinar tincidunt, lorem nisi ullamcorper nibh, ac commodo massa nisi vitae ligula. Suspendisse quis tempus nulla. Ut ullamcorper, enim at consequat dictum, augue tellus mollis justo, id dignissim augue libero sit amet dui. Aenean consequat justo lorem, sit amet posuere arcu feugiat ac. Duis tincidunt placerat tortor id posuere. Aenean pulvinar ultricies risus ac suscipit. Suspendisse commodo libero et facilisis maximus.nterdum et malesuada fames ac ante ipsum primis in faucibus. Duis nec suscipit lectus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec massa dolor, facilisis nec justo in, aliquet viverra lacus. Sed quis molestie libero. Donec ac leo ac enim vulputate cursus non nec eros. In tempor ex a dui fermentum fringilla.Nullam sit amet neque efficitur dui tincidunt tempor. Phasellus hendrerit tempor turpis, eu rhoncus nisl imperdiet et. Praesent at venenatis neque. Nullam a mauris lorem. Cras pretium massa tellus, sit amet semper metus tempor eu. Ut tincidunt venenatis tincidunt. Nam luctus euismod neque.'
         }, {
             name: 'Placeholder 3',
-            author: 'Harry'
+            author: 'Harry',
+            content: 'Lorem <h1>ipsum</h1> dolor sit amet, consectetur adipiscing elit. Nullam cursus mi tortor, non dignissim turpis porttitor quis. Fusce lobortis justo vel ligula vehicula suscipit. Nunc semper, dolor ut pulvinar tincidunt, lorem nisi ullamcorper nibh, ac commodo massa nisi vitae ligula. Suspendisse quis tempus nulla. Ut ullamcorper, enim at consequat dictum, augue tellus mollis justo, id dignissim augue libero sit amet dui. Aenean consequat justo lorem, sit amet posuere arcu feugiat ac. Duis tincidunt placerat tortor id posuere. Aenean pulvinar ultricies risus ac suscipit. Suspendisse commodo libero et facilisis maximus.nterdum et malesuada fames ac ante ipsum primis in faucibus. Duis nec suscipit lectus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec massa dolor, facilisis nec justo in, aliquet viverra lacus. Sed quis molestie libero. Donec ac leo ac enim vulputate cursus non nec eros. In tempor ex a dui fermentum fringilla.Nullam sit amet neque efficitur dui tincidunt tempor. Phasellus hendrerit tempor turpis, eu rhoncus nisl imperdiet et. Praesent at venenatis neque. Nullam a mauris lorem. Cras pretium massa tellus, sit amet semper metus tempor eu. Ut tincidunt venenatis tincidunt. Nam luctus euismod neque.'
         }, {
             name: 'Placeholder 4',
-            author: 'Ballsy'
+            author: 'Ballsy',
+            content: 'Lorem <h1>ipsum</h1> dolor sit amet, consectetur adipiscing elit. Nullam cursus mi tortor, non dignissim turpis porttitor quis. Fusce lobortis justo vel ligula vehicula suscipit. Nunc semper, dolor ut pulvinar tincidunt, lorem nisi ullamcorper nibh, ac commodo massa nisi vitae ligula. Suspendisse quis tempus nulla. Ut ullamcorper, enim at consequat dictum, augue tellus mollis justo, id dignissim augue libero sit amet dui. Aenean consequat justo lorem, sit amet posuere arcu feugiat ac. Duis tincidunt placerat tortor id posuere. Aenean pulvinar ultricies risus ac suscipit. Suspendisse commodo libero et facilisis maximus.nterdum et malesuada fames ac ante ipsum primis in faucibus. Duis nec suscipit lectus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec massa dolor, facilisis nec justo in, aliquet viverra lacus. Sed quis molestie libero. Donec ac leo ac enim vulputate cursus non nec eros. In tempor ex a dui fermentum fringilla.Nullam sit amet neque efficitur dui tincidunt tempor. Phasellus hendrerit tempor turpis, eu rhoncus nisl imperdiet et. Praesent at venenatis neque. Nullam a mauris lorem. Cras pretium massa tellus, sit amet semper metus tempor eu. Ut tincidunt venenatis tincidunt. Nam luctus euismod neque.'
         }, {
             name: 'Placeholder 5',
-            author: 'Blabla'
+            author: 'Blabla',
+            content: 'Lorem <h1>ipsum</h1> dolor sit amet, consectetur adipiscing elit. Nullam cursus mi tortor, non dignissim turpis porttitor quis. Fusce lobortis justo vel ligula vehicula suscipit. Nunc semper, dolor ut pulvinar tincidunt, lorem nisi ullamcorper nibh, ac commodo massa nisi vitae ligula. Suspendisse quis tempus nulla. Ut ullamcorper, enim at consequat dictum, augue tellus mollis justo, id dignissim augue libero sit amet dui. Aenean consequat justo lorem, sit amet posuere arcu feugiat ac. Duis tincidunt placerat tortor id posuere. Aenean pulvinar ultricies risus ac suscipit. Suspendisse commodo libero et facilisis maximus.nterdum et malesuada fames ac ante ipsum primis in faucibus. Duis nec suscipit lectus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec massa dolor, facilisis nec justo in, aliquet viverra lacus. Sed quis molestie libero. Donec ac leo ac enim vulputate cursus non nec eros. In tempor ex a dui fermentum fringilla.Nullam sit amet neque efficitur dui tincidunt tempor. Phasellus hendrerit tempor turpis, eu rhoncus nisl imperdiet et. Praesent at venenatis neque. Nullam a mauris lorem. Cras pretium massa tellus, sit amet semper metus tempor eu. Ut tincidunt venenatis tincidunt. Nam luctus euismod neque.'
         }],
         function(tempBlog) {
             Blogs.insert({
                 name: tempBlog.name,
-                author: tempBlog.author
+                author: tempBlog.author,
+                content: tempBlog.content
             });
         });
 }

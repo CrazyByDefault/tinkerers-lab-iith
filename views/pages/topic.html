@@ -5,15 +5,32 @@
 			<!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script> -->
 			<script src="//cdnjs.cloudflare.com/ajax/libs/trix/0.9.2/trix.js"></script>
 			<script src="dist/angular-trix.min.js"></script>
-			<h2 class="font-alt">{{ topic.name }}</h2>
-			<h4 class="font-serif">{{ topic.description }}</h4>
 			<div class="row">
-				<ul>
+				<div class="col-sm-11">
+					<h2 class="font-alt">{{ topic.name }}</h2>
+				</div>
+				<div class="col-sm-1 et-icons">
+					<span class="box1" title="Create new thread"><span class="icon-pencil" aria-hidden="true"></span></span>
+				</div>
+			</div>
+			<h4 class="font-serif">{{ topic.description }}</h4>
+			<div class="row multi-columns-row pb-20"  ng-repeat="thread in threads" style="border-bottom: 1px solid #e5e5e5;">
+				<div class="col-sm-12" style="border-top: 1px solid #e5e5e5;">
+					<h3 class="font-alt align-left"><a ui-sref="thread({ threadId: thread._id })">{{ thread.title }}</a></h3>
+				</div>
+				<div class="col-sm-8">
+					<div class="font-serif align-left">{{ thread.author }}</div>
+				</div>
+				<div class="col-sm-4" >
+					<div class="font-serif align-right">{{ thread.createdAt | date}}</div>
+				</div>
+			</div>
+				<!-- <ul>
 					<li ng-repeat="thread in threads">
 						<a ui-sref="thread({threadId: thread._id})">{{ thread.title }}</a>
 						by {{ thread.author }} at {{ thread.createdAt | date }}
 					</li>
-				</ul>
+				</ul> -->
 			</div>
 			<h2 class="font-alt">Create a new thread</h2>
 			<form ng-submit="createThread(thread)">
