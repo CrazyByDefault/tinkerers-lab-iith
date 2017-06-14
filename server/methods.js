@@ -34,15 +34,16 @@ Meteor.methods({
 			throw new Meteor.Error("You need to be logged in to do this!");
 		}
 		if(!content){
-			throw new Meteor.Error("Post can't be empty");
+			throw new Meteor.Error("Comment can't be empty");
 		}
 
-		var post = {
-			author: user.emails[0].address,
+		var comment = {
+			author: user.profile.name,
 			createdAt: new Date(),
-			threadId: threadId,
 			content: content
 		};
-		return Posts.insert(post);
+		return Blogs.update({_id: id}, {
+			$addToSet: {comments: comment}
+		});
 	}
 });

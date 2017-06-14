@@ -20,7 +20,7 @@
             </div>
           </div>
           <div class="post-entry">
-            <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</p>
+            <p ng-bind-html="trustHtml(blog.description)"></p>
           </div>
           <div class="post-more"><a class="more-link" ui-sref="blog({blogId: blog._id})">Read more</a></div>
         </div>
@@ -38,3 +38,5 @@
     </div>
   </div>
 </section>
+
+<script src="assets/js/main.js"></script>

@@ -17,16 +17,6 @@ Meteor.publish('thread', function(id) {
 	return Threads.find({_id: id});
 });
 
-Meteor.publish('posts', function(threadId) {
-	check(threadId, String);
-	return Posts.find({ threadId: threadId });
-});
-
-Meteor.publish('post', function(id) {
-	check(id, String)
-	return Posts.find({_id: id});
-});
-
 Meteor.publish('blogs', function() {
 	return Blogs.find();
 });

@@ -7,7 +7,8 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix'])
 
         $stateProvider.state('welcome', {
             url: '/welcome',
-            templateUrl: 'views/pages/welcome.html'
+            templateUrl: 'views/pages/welcome.html',
+            controller: 'WelcomeController'
         });
 
         $stateProvider.state('inventory', {
@@ -74,6 +75,19 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix'])
             }
         }
     })
+    .controller('WelcomeController', function($scope) {
+        $scope.subscribe('blogs');
+        $scope.helpers({
+            blogs: function() {
+                return Blogs.find({}, {
+                    sort: {
+                        name: 1,
+                        author: 1
+                    },
+                });
+            }
+        })
+    })
     .controller('TopicsContoller', function($scope) {
         $scope.subscribe('topics');
         $scope.helpers({
@@ -119,24 +133,21 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix'])
             // $scope.htmlString = thread.content;
             return [$stateParams.threadId];
         });
-        $scope.subscribe('posts', function() {
-            return [$stateParams.threadId];
-        });
         $scope.helpers({
             thread: function() {
                 return Threads.findOne({
                     _id: $stateParams.threadId
                 });
             },
-            posts: function() {
-                return Posts.find({
-                    threadId: $stateParams.threadId
-                });
+            comments: function() {
+                return [Blogs.findOne({
+                    _id: $stateParams.threadId
+                }).fetch().comments];
             }
         });
 
 
-        $scope.createPost = function(post) {
+        $scope.createPost = function(comment) {
             $meteor.call("createPost", $stateParams.threadId, post.content).then(function() {
                 post.content = '';
             }).catch(function() {
