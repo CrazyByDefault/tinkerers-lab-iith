@@ -24,8 +24,8 @@ Meteor.methods({
 		return Threads.insert(thread);
 	},
 
-	createPost: function(threadId, content) {
-		check(threadId, String);
+	createComment: function(blogId, content) {
+		check(blogId, String);
 		check(content, String);
 
 		var user = Meteor.user();
@@ -42,8 +42,31 @@ Meteor.methods({
 			createdAt: new Date(),
 			content: content
 		};
-		return Blogs.update({_id: id}, {
+		return Blogs.update({_id: blogId}, {
 			$addToSet: {comments: comment}
+		});
+	},
+
+	createReply: function(threadId, content) {
+		check(threadId, String);
+		check(content, String);
+
+		var user = Meteor.user();
+
+		if(!user){
+			throw new Meteor.Error("You need to be logged in to do this!");
+		}
+		if(!content){
+			throw new Meteor.Error("Reply can't be empty");
+		}
+
+		var reply = {
+			author: user.profile.name,
+			createdAt: new Date(),
+			content: content
+		};
+		return Threads.update({_id: threadId}, {
+			$addToSet: {replies: reply}
 		});
 	}
 });

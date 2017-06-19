@@ -104,7 +104,7 @@
       </div>
     </div>
     <div class="row multi-columns-row post-columns">
-      <div class="col-md-3 col-sm-6 col-xs-12">
+      <!-- <div class="col-md-3 col-sm-6 col-xs-12"> -->
       <div class="col-sm-6 col-md-4 col-lg-4" ng-repeat="blog in blogs | limitTo: 3">
         <div class="post mb-20">
           <div class="post-thumbnail"><a href="#"><img src="assets/images/work-1.jpg" alt="Blog-post Thumbnail"/></a></div>
@@ -114,7 +114,7 @@
             </div>
           </div>
           <div class="post-entry">
-            <p>I recently decided to get myself a mechanical keyboard. I looked everywhere I could, but no retail keyboard I could find was right for me - either the layout was wrong, or they didn't come in...</p>
+            <p>{{ blog.description }}</p>
           </div>
           <div class="post-more"><a class="more-link" href="#">Read more</a></div>
         </div>
@@ -133,7 +133,7 @@
           <div class="post-more"><a class="more-link" href="#">Read more</a></div>
         </div>
       </div> -->
-      <div class="col-sm-6 col-md-4 col-lg-4">
+      <!-- <div class="col-sm-6 col-md-4 col-lg-4">
         <div class="post mb-20">
           <div class="post-thumbnail"><a href="#"><img src="assets/images/work-2.jpg" alt="Blog-post Thumbnail"/></a></div>
           <div class="post-header font-alt">
@@ -160,7 +160,7 @@
           </div>
           <div class="post-more"><a class="more-link" href="#">Read more</a></div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>
@@ -177,4 +177,5 @@
 <script src="assets/lib/magnific-popup/dist/jquery.magnific-popup.js"></script>
 <script src="assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js"></script>
 <script src="assets/js/plugins.js"></script> -->
+<script src="assets/js/plugins.js"></script>
 <script src="assets/js/main.js"></script>

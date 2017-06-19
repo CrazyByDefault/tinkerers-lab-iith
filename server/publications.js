@@ -25,3 +25,7 @@ Meteor.publish('blog', function(id) {
 	check(id, String);
 	return Blogs.find({_id: id});
 });
+
+Meteor.publish('files.images.all', function() {
+    return Images.find().cursor;
+});

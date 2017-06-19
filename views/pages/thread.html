@@ -2,7 +2,7 @@
     <div class="page">
         <div class="container">
             <link rel="stylesheet" type="text/css" href="assets/css/trix.css">
-            <script src="//cdnjs.cloudflare.com/ajax/libs/trix/0.9.2/trix.js"></script>
+            <script src="assets/js/trix.js"></script>
             <script src="dist/angular-trix.min.js"></script>
             <p>{{ thread.title }}</p>
             <p>by {{ thread.author }} on {{ thread.createdAt | date}}</p>
@@ -13,12 +13,38 @@
                     by {{ post.author }} at {{ post.createdAt | date }}
                 </li>
             </ul>
-
-            <h2>Reply</h2>
-            <form ng-submit="createPost(post)">
-                <input type="text" placeholder="Write your reply..." ng-model="post.content">
-                <button type="submit">Post</button>
-            </form>
         </div>
     </div>
+</section>
+
+<section class="module-small">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="comments">
+          <h4 class="comment-title font-alt">Replies</h4>
+          <div class="comment clearfix" ng-repeat="reply in thread.replies">
+            <div class="comment-avatar"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/ryanbattles/128.jpg" alt="avatar"/></div>
+            <div class="comment-content clearfix">
+              <div class="comment-author font-alt">{{ reply.author }}</div>
+              <div class="comment-body">
+                <p>{{ reply.content }}</p>
+            </div>
+            <div class="comment-meta font-alt">{{ reply.createdAt | date }}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="comment-form">
+  <h4 class="comment-form-title font-alt">Add your reply</h4>
+  <form ng-submit="createReply(reply)">
+    <div class="form-group">
+      <textarea class="form-control" id="comment" name="reply" rows="4" placeholder="Comment" ng-model="reply.content"></textarea>
+  </div>
+  <button class="btn btn-round btn-d" type="submit">Post reply</button>
+</form>
+</div>
+</div>
+</div>
+</div>
 </section>

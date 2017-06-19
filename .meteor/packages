@@ -25,3 +25,5 @@ npm-bcrypt
 accounts-ui-unstyled
 accounts-google
 service-configuration
+jalik:ufs
+jalik:ufs-local

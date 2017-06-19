@@ -58,6 +58,21 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix'])
             }
         });
 
+        const Images = new FilesCollection({
+            collectionName: 'Images',
+            allowClientCode: false, // Disallow remove files from Client
+            onBeforeUpload(file) {
+                // Allow upload files under 10MB, and only in png/jpg/jpeg formats
+                if (file.size <= 10485760 && /png|jpg|jpeg/i.test(file.extension)) {
+                    return true;
+                } else {
+                    return 'Please upload image, with size equal or less than 10MB';
+                }
+            }
+        });
+        
+        // $rootScope.subscribe('files.images.all');
+
         $rootScope.trustHtml = function(stuff) {
             return $sce.trustAsHtml(stuff);
         };
@@ -135,23 +150,24 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix'])
         });
         $scope.helpers({
             thread: function() {
-                return Threads.findOne({
-                    _id: $stateParams.threadId
-                });
-            },
-            comments: function() {
-                return [Blogs.findOne({
-                    _id: $stateParams.threadId
-                }).fetch().comments];
-            }
+                    return Threads.findOne({
+                        _id: $stateParams.threadId
+                    });
+                }
+                /*,
+                            comments: function() {
+                                return Threads.findOne({
+                                    _id: $stateParams.threadId
+                                }).comments;
+                            }*/
         });
 
 
-        $scope.createPost = function(comment) {
-            $meteor.call("createPost", $stateParams.threadId, post.content).then(function() {
-                post.content = '';
-            }).catch(function() {
-                alert("An error occured while creating the post!");
+        $scope.createReply = function(reply) {
+            $meteor.call('createReply', $stateParams.threadId, reply.content).then(function() {
+                reply.content = '';
+            }).catch(function(err) {
+                alert("An error occured while creating reply! " + err);
             });
         };
     })
@@ -162,22 +178,38 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix'])
                 return Blogs.find({}, {
                     sort: {
                         name: 1,
-                        author: 1
                     },
                 });
             }
         });
     })
-    .controller('BlogController', function($scope, $stateParams) {
+    .controller('BlogController', function($scope, $stateParams, $meteor) {
         $scope.subscribe('blog', function() {
             return [$stateParams.blogId];
         });
 
+        $scope.createComment = function(comment) {
+            $meteor.call('createComment', $stateParams.blogId, comment.content).then(function() {
+                comment.content = '';
+            }).catch(function(err) {
+                alert("An error occured while creating comment! " + err);
+            });
+        };
+
         $scope.helpers({
             blog: function() {
-                return Blogs.findOne({
-                    _id: $stateParams.blogId
-                });
-            }
+                    return Blogs.findOne({
+                        _id: $stateParams.blogId
+                    });
+                }
+                /*,
+                            comments: function() {
+                                const currentBlog = Blogs.findOne({ _id: $stateParams.blogId })
+                                return Blogs.findOne({
+                                    _id: $stateParams.blogId
+                                }, {
+                                    fields: { comments: 1 }
+                                }).comments;
+                            }*/
         });
     });
