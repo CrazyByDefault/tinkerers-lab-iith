@@ -2,15 +2,13 @@
     <div class="page">
         <div class="container">
             <link rel="stylesheet" type="text/css" href="assets/css/trix.css">
-            <script src="assets/js/trix.js"></script>
-            <script src="dist/angular-trix.min.js"></script>
             <p>{{ thread.title }}</p>
-            <p>by {{ thread.author }} on {{ thread.createdAt | date}}</p>
+            <p>by {{ thread.author.profile.name }} on {{ thread.createdAt | date}}</p>
             <p ng-bind-html="trustHtml(thread.content)"></p>
             <ul>
                 <li ng-repeat="post in posts">
                     <p ng-bind="post.content"></p>
-                    by {{ post.author }} at {{ post.createdAt | date }}
+                    by {{ post.author.profile.name }} at {{ post.createdAt | date }}
                 </li>
             </ul>
         </div>
@@ -26,7 +24,7 @@
           <div class="comment clearfix" ng-repeat="reply in thread.replies">
             <div class="comment-avatar"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/ryanbattles/128.jpg" alt="avatar"/></div>
             <div class="comment-content clearfix">
-              <div class="comment-author font-alt">{{ reply.author }}</div>
+              <div class="comment-author font-alt">{{ reply.author.profile.user }}</div>
               <div class="comment-body">
                 <p>{{ reply.content }}</p>
             </div>

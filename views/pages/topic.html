@@ -3,8 +3,6 @@
 		<div class="container">
 			<link rel="stylesheet" type="text/css" href="assets/css/trix.css">
 			<!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script> -->
-			<script src="assets/js/trix.js"></script>
-			<script src="dist/angular-trix.min.js"></script>
 			<div class="row">
 				<div class="col-sm-11">
 					<h2 class="font-alt">{{ topic.name }}</h2>
@@ -46,7 +44,7 @@
 					<h3 class="font-alt align-left"><a ui-sref="thread({ threadId: thread._id })">{{ thread.title }}</a></h3>
 				</div>
 				<div class="col-sm-8">
-					<div class="font-serif align-left">{{ thread.author }}</div>
+					<div class="font-serif align-left">{{ thread.author.profile.name }}</div>
 				</div>
 				<div class="col-sm-4" >
 					<div class="font-serif align-right">{{ thread.createdAt | date}}</div>

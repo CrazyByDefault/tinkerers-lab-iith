@@ -60,7 +60,7 @@
 						</li>
 						<li><a>About Us</a>
 						</li>
-						<li><a style="color: rgba(255, 255, 255, 0.7) !important;">{{ currentUser.profile.name }}</a></li>
+						<li><a style="color: rgba(255, 255, 255, 0.7) !important;">{{ currentUser.profile.name }} <span class="badge">{{ currentUser.profile.notifications === 0 ? '' : currentUser.profile.notifications }}</span></a></li>
 						<li><a ng-click="logInorOut()" >{{ availableAccountAction }}</a></li>
 						
 					</ul>
@@ -86,5 +86,32 @@
 	<script src="assets/lib/magnific-popup/dist/jquery.magnific-popup.js"></script>
 	<script src="assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js"></script>
 	<script src="assets/js/plugins.js"></script>
+	<script src="assets/js/trix.js"></script>
+	<script src="dist/angular-trix.min.js"></script>
 	<!-- <script src="assets/js/main.js"></script> -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+		    function navbarSubmenu(width) {
+		        if (width > 767) {
+		            $('.navbar-custom .navbar-nav > li.dropdown').hover(function() {
+		                var MenuLeftOffset = $('.dropdown-menu', $(this)).offset().left;
+		                var Menu1LevelWidth = $('.dropdown-menu', $(this)).width();
+		                if (width - MenuLeftOffset < Menu1LevelWidth * 2) {
+		                    $(this).children('.dropdown-menu').addClass('leftauto');
+		                } else {
+		                    $(this).children('.dropdown-menu').removeClass('leftauto');
+		                }
+		                if ($('.dropdown', $(this)).length > 0) {
+		                    var Menu2LevelWidth = $('.dropdown-menu', $(this)).width();
+		                    if (width - MenuLeftOffset - Menu1LevelWidth < Menu2LevelWidth) {
+		                        $(this).children('.dropdown-menu').addClass('left-side');
+		                    } else {
+		                        $(this).children('.dropdown-menu').removeClass('left-side');
+		                    }
+		                }
+		            });
+		        }
+		    }
+		});
+	</script>
 </body>
