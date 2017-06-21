@@ -47,7 +47,7 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix'])
         });
 
     })
-    .run(function($state, $rootScope, $sce) {
+    .run(function($state, $stateParams, $rootScope, $sce, $meteor) {
         // We inject $state here to initialize ui.router 
         $rootScope.helpers({
             availableAccountAction: function() {
@@ -55,8 +55,14 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix'])
                     return 'Logout';
                 }
                 return 'Sign In';
-            }
+            },
         });
+
+        $rootScope.clearAllNotifications = function() {
+            $meteor.call("clearAllNotifications").then(function() {
+                console.log("Cleared all notifs!")
+            });
+        };
 
         $rootScope.trustHtml = function(stuff) {
             return $sce.trustAsHtml(stuff);

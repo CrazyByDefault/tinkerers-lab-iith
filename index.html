@@ -60,13 +60,40 @@
 						</li>
 						<li><a>About Us</a>
 						</li>
-						<li><a style="color: rgba(255, 255, 255, 0.7) !important;">{{ currentUser.profile.name }} <span class="badge">{{ currentUser.profile.notifications === 0 ? '' : currentUser.profile.notifications }}</span></a></li>
+						<li><a style="color: rgba(255, 255, 255, 0.7) !important;" data-toggle="modal" data-target="#notifModal">{{ currentUser.profile.name }} <span class="badge">{{ currentUser.profile.notifications.length === 0 ? '' : currentUser.profile.notifications.length }}</span></a></li>
 						<li><a ng-click="logInorOut()" >{{ availableAccountAction }}</a></li>
 						
 					</ul>
 				</div>
 			</div>
 		</nav>
+
+		<div id="notifModal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content" style="">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title font-alt">Notifications</h4>
+					</div>
+					<div class="modal-body">
+						<div ng-if="currentUser.profile.notifications.length !=0" ng-repeat="notification in currentUser.profile.notifications"><a ui-sref="thread({ threadId: notification.parentThread })">
+							<p class="font-alt">{{notification.commentingUser.profile.name}} commented on your thread!</p>
+							<p class="font-serif">{{notification.comment}}</p>
+							<hr>
+						</a></div>
+						<div ng-if="!currentUser.profile.notifications.length" class="center">
+							<p class="font-alt">No New Notifications</p>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clearAllNotifications()">Clear All</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
 
 
 		<div class="forum">
@@ -89,7 +116,7 @@
 	<script src="assets/js/trix.js"></script>
 	<script src="dist/angular-trix.min.js"></script>
 	<!-- <script src="assets/js/main.js"></script> -->
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		$(document).ready(function() {
 		    function navbarSubmenu(width) {
 		        if (width > 767) {
@@ -113,5 +140,5 @@
 		        }
 		    }
 		});
-	</script>
+	</script> -->
 </body>

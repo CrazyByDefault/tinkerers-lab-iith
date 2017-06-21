@@ -64,12 +64,19 @@ Meteor.methods({
             throw new Meteor.Error("Reply can't be empty");
         }
 
-        // Increment unread count for user who created post
-        Meteor.users.update({ _id: Threads.findOne({ _id: threadId }).author._id }, {
-        	$inc: {
-        		"profile.notifications": 1
-        	}
-        });
+        // Generate a notification for user who created the post
+        if (user._id != Threads.findOne({ _id: threadId }).author._id) {
+	        Meteor.users.update({ _id: Threads.findOne({ _id: threadId }).author._id }, {
+	        	$addToSet: {
+	        		"profile.notifications": {
+	        			parentThread: threadId,
+	        			commentingUser: user,
+	        			createdAt: new Date(),
+	        			comment: content
+	        		}
+	        	}
+	        });
+	    }
 
         var reply = {
             author: user.profile.name,
@@ -83,5 +90,33 @@ Meteor.methods({
                 replies: reply
             }
         });
+    },
+
+    clearNotification: function(date) {
+    	var user = Meteor.user();
+
+    	if(!user){
+    		throw Meteor.Error("Not logged in!");
+    	}
+
+    	Meteor.users.update({ _id: user._id }, {
+    		$pull: { "profile.notifications": [{ createdAt: date }] }
+    	});
+
+    },
+
+    clearAllNotifications: function() {
+    	var user = Meteor.user();
+
+    	if(!user){
+    		throw Meteor.Error("Not logged in!");
+    	}
+
+    	Meteor.users.update({ _id: user._id }, {
+    		$set: { 
+    			"profile.notifications": []
+    		}
+    	});
+
     }
 });
