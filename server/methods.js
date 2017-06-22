@@ -100,7 +100,7 @@ Meteor.methods({
     	}
 
     	Meteor.users.update({ _id: user._id }, {
-    		$pull: { "profile.notifications": [{ createdAt: date }] }
+    		$pull: { "profile.notifications": { createdAt: date } }
     	});
 
     },

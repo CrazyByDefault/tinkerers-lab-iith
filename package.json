@@ -13,6 +13,7 @@
     "ev-emitter": "^1.1.0",
     "fizzy-ui-utils": "^2.0.5",
     "get-size": "^2.0.2",
+    "gm": "^1.23.0",
     "isotope": "^1.0.0-alpha.3",
     "isotope-layout": "^3.0.4",
     "jquery": "^3.2.1",

@@ -58,6 +58,13 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix'])
             },
         });
 
+        $rootScope.clearNotification = function(date) {
+            console.log(date)
+            $meteor.call("clearNotification", date).then(function() {
+                console.log("Cleared a notif!");
+            });
+        };
+
         $rootScope.clearAllNotifications = function() {
             $meteor.call("clearAllNotifications").then(function() {
                 console.log("Cleared all notifs!")
