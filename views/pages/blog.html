@@ -21,9 +21,9 @@
         <div class="comments">
           <h4 class="comment-title font-alt">Comments</h4>
           <div class="comment clearfix" ng-repeat="comment in blog.comments">
-            <div class="comment-avatar"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/ryanbattles/128.jpg" alt="avatar"/></div>
+            <div class="comment-avatar"><img ng-src="{{comment.author.services.google.picture}}" alt="avatar"/></div>
             <div class="comment-content clearfix">
-              <div class="comment-author font-alt">{{ comment.author }}</div>
+              <div class="comment-author font-alt">{{ comment.author.profile.name }}</div>
               <div class="comment-body">
                 <p>{{ comment.content }}</p>
               </div>

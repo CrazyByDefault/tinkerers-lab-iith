@@ -16,7 +16,7 @@
 			<div id="myModal" class="modal fade" role="dialog">
 				<div class="modal-dialog">
 
-					<!-- Modal content-->
+					Modal content
 					<div class="modal-content" style="">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -39,6 +39,13 @@
 
 
 			<h4 class="font-serif">{{ topic.description }}</h4>
+
+			<!-- This div is used if no threads are found in this topic -->
+			<div class="row pb-20 pt-40 font-alt align-center" ng-if="threads.length == 0">
+				<h3 style="text-transform: none !important">No threads here... yet. Go ahead, make one!</h3>
+			</div>
+
+
 			<div class="row multi-columns-row pb-20"  ng-repeat="thread in threads" style="border-bottom: 1px solid #e5e5e5;">
 				<div class="col-sm-12" style="border-top: 1px solid #e5e5e5;">
 					<h3 class="font-alt align-left"><a ui-sref="thread({ threadId: thread._id })">{{ thread.title }}</a></h3>

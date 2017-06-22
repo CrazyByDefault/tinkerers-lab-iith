@@ -79,7 +79,7 @@ Meteor.methods({
 	    }
 
         var reply = {
-            author: user.profile.name,
+            author: user,
             createdAt: new Date(),
             content: content
         };
