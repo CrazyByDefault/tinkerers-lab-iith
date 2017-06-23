@@ -129,9 +129,38 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix'])
             threads: function() {
                 return Threads.find({
                     topicId: $stateParams.topicId
+                }, {
+                    sort: {
+                        weight: 1
+                    }
                 });
             }
         });
+
+        $scope.castVote = function(threadId, vote) {
+            $meteor.call("voteCaster", threadId, vote).then(function() {
+                // TODO Do I need anything here?
+            }).catch(function(err) {
+                alert("Vote failed for mysterious reasons... " + err);
+            });
+        }
+
+        $scope.upvoteThread = function(threadId) {
+            $meteor.call("upvoteThread", threadId).then(function() {
+                //TODO Do I need anything here?
+            }).catch(function(err) {
+                alert("Upvote failed... da fuq?" + err );
+            });
+        }
+
+        $scope.downvoteThread = function() {
+            $meteor.call("downvoteThread", $stateParams.threadId).then(function() {
+                //TODO Do I need anything here?
+            }).catch(function(err) {
+                alert("Downvote failed... da fuq?" + err );
+            });
+        }
+
         $scope.createThread = function(thread) {
             $meteor.call("createThread", $stateParams.topicId, thread.title, thread.content).then(function() {
                 thread.content = '';

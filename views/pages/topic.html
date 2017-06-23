@@ -47,8 +47,13 @@
 
 
 			<div class="row multi-columns-row pb-20"  ng-repeat="thread in threads" style="border-bottom: 1px solid #e5e5e5;">
-				<div class="col-sm-12" style="border-top: 1px solid #e5e5e5;">
+				<div class="col-sm-10" style="border-top: 1px solid #e5e5e5;">
 					<h3 class="font-alt align-left"><a ui-sref="thread({ threadId: thread._id })">{{ thread.title }}</a></h3>
+				</div>
+				<div class="col-sm-2 vote-box" style="border-top: 1px solid #e5e5e5;">
+					<div class="arrow-up" ng-click="castVote(thread._id, 1)"></div>
+					<div class="font-alt">{{ thread.weight ? thread.weight : '0' }}</div>
+					<div class="arrow-down" ng-click="castVote(thread._id, -1)"></div>
 				</div>
 				<div class="col-sm-8">
 					<div class="font-serif align-left">{{ thread.author.profile.name }}</div>
