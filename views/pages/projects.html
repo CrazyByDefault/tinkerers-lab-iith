@@ -1,0 +1,87 @@
+<script src="assets/js/multi-step-modal.js"></script>
+<section class="module-medium">
+	<div class="page">
+		<div class="container" style="min-height: 80vh">
+			<link rel="stylesheet" type="text/css" href="assets/css/trix.css">
+			<!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script> -->
+			<div class="row">
+				<div class="col-sm-11">
+					<h2 class="font-alt">Projects in progress</h2>
+				</div>
+				<div class="col-sm-1 et-icons">
+					<!-- <span class="box1" title="Create new project"><span class="icon-pencil" aria-hidden="true"></span></span> -->
+					<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Start a new project!</button>
+				</div>
+			</div>
+
+			<div id="myModal" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+
+					<div class="modal-content" style="">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title font-alt">Create a new project</h4>
+						</div>
+						<div class="modal-body">
+							<form ng-submit="createProject(project)">
+								<input type="text" placeholder=" Project title" ng-model="project.title" class="mb-10">
+								<trix-editor angular-trix ng-model="project.description" class="trix-content" style="min-height: 50vh !important" ></trix-editor>
+								<button type="submit" class="btn btn-info btn-lg mt-10" >Create!</button>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+
+			
+
+
+			<h4 class="font-serif">Take a look at what's currently being built!</h4>
+
+			<!-- This div is used if no projects are found in this topic -->
+			<div class="row pb-20 pt-40 font-alt align-center" ng-if="projects.length == 0">
+				<h3 style="text-transform: none !important">No projects in progress... yet. Go ahead, start one!</h3>
+			</div>
+
+
+			<div class="row multi-columns-row pb-20 projects" ng-repeat="project in projects" style="border-bottom: 1px solid #e5e5e5;">
+				<div class="col-sm-10" style="border-top: 1px solid #e5e5e5;">
+					<h3 class="font-alt align-left"><a ui-sref="project({ projectId: project._id })">{{ project.title }}</a></h3>
+				</div>
+				<div class="col-sm-2 vote-box" style="border-top: 1px solid #e5e5e5;">
+					<!-- <div id="vote-box">
+						<div id="form" class="vote-image">
+							<fieldset>
+								<div class="arrow-up" ng-click="castVote(project._id, 1)"></div>
+								<div class="font-alt">{{ project.weight ? project.weight : '0' }}</div>
+								<div class="arrow-down" ng-click="castVote(project._id, -1)"></div>
+							</fieldset> 
+						</div>
+					</div> -->
+
+					<div class="thumb-up" ng-click="castVote(project._id, 1)"><img src="/assets/images/thumb-up.png" height="25px" width="25px" alt=""></div>
+					<div class="font-alt vote-count"> {{ project.weight }} </div>
+					<div class="thumb-down" ng-click="castVote(project._id, -1)"><img src="/assets/images/thumb-down.png" height="25px" width="25px" alt=""></div>
+
+				</div>
+				<div class="col-sm-8">
+					<div class="font-serif align-left">{{ project.author.profile.name }}</div>
+				</div>
+				<div class="col-sm-4" >
+					<div class="font-serif align-right">{{ project.createdAt | date}}</div>
+				</div>
+			</div>
+				<!-- <ul>
+					<li ng-repeat="project in projects">
+						<a ui-sref="project({projectId: project._id})">{{ project.title }}</a>
+						by {{ project.author }} at {{ project.createdAt | date }}
+					</li>
+				</ul> -->
+			</div>
+		</section>
+

@@ -1,4 +1,4 @@
-angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix'])
+angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix', 'ngAnimate'])
     .config(function($urlRouterProvider, $stateProvider) {
         // Set the default route 
         $urlRouterProvider
@@ -26,7 +26,19 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix'])
             url: '/blog/:blogId',
             templateUrl: 'views/pages/blog.html',
             controller: 'BlogController'
-        })
+        });
+
+        $stateProvider.state('projects', {
+            url: '/projects',
+            templateUrl: 'views/pages/projects.html',
+            controller: 'ProjectsController'
+        });
+
+        $stateProvider.state('project', {
+            url: '/projects/:projectId',
+            templateUrl: 'views/pages/project.html',
+            controller: 'ProjectController'
+        });
 
         $stateProvider.state('topics', {
             url: '/topics',
@@ -81,6 +93,12 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix'])
                 Meteor.loginWithGoogle({
                     requestPermissions: ['email', 'profile'],
                     loginStyle: 'popup'
+                }, function(error) {
+                    if(error){
+                        console.log("Error logging in!");
+                    }else{
+                        $meteor.call("prepAccount");
+                    }
                 });
             } else {
                 console.log("Logging out");
@@ -88,14 +106,18 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix'])
             }
         }
     })
-    .controller('WelcomeController', function($scope) {
+    .controller('WelcomeController', function($scope, $stateParams) {
+
+        $scope.subscribe('blog', function() {
+            return [$stateParams.blogId];
+        });
+
         $scope.subscribe('blogs');
         $scope.helpers({
             blogs: function() {
                 return Blogs.find({}, {
                     sort: {
-                        name: 1,
-                        author: 1
+                        name: 1
                     },
                 });
             }
@@ -105,11 +127,7 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix'])
         $scope.subscribe('topics');
         $scope.helpers({
             topics: function() {
-                return Topics.find({}, {
-                    sort: {
-                        name: 1
-                    }
-                });
+                return Topics.find({}, {});
             }
         });
     })
@@ -131,14 +149,14 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix'])
                     topicId: $stateParams.topicId
                 }, {
                     sort: {
-                        weight: 1
+                        weight: -1
                     }
                 });
             }
         });
 
         $scope.castVote = function(threadId, vote) {
-            $meteor.call("voteCaster", threadId, vote).then(function() {
+            $meteor.call("voteCaster", threadId, vote, 1).then(function() {
                 // TODO Do I need anything here?
             }).catch(function(err) {
                 alert("Vote failed for mysterious reasons... " + err);
@@ -239,4 +257,65 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix'])
                                 }).comments;
                             }*/
         });
+    })
+    .controller('ProjectsController', function($scope, $stateParams, $meteor) {
+        $scope.subscribe('projects');
+
+        $scope.helpers({
+            projects: function() {
+                return Projects.find({}, {
+                    sort: {
+                        weight: 1
+                    }
+                });
+            }
+
+        });
+
+        $scope.castVote = function(threadId, vote) {
+            $meteor.call("voteCaster", threadId, vote, 0).then(function() {
+                // TODO Do I need anything here?
+            }).catch(function(err) {
+                alert("Vote failed for mysterious reasons... " + err);
+            });
+        }
+
+        $scope.createProject = function(project) {
+            $meteor.call("createProject", project.title, project.description, project.timeline).then(function() {
+                project.title = '';
+                project.description = '';
+                project.timeline = '';
+            }).catch(function(err) {
+                alert("Somethin dun fucked up " + err);
+            });
+        }
+
+    })
+    .controller('ProjectController', function($scope, $sce, $stateParams, $meteor) {
+        $scope.subscribe('project', function() {
+            // $scope.htmlString = project.content;
+            return [$stateParams.projectId];
+        });
+        $scope.helpers({
+            project: function() {
+                    return Projects.findOne({
+                        _id: $stateParams.projectId
+                    });
+                }
+                /*,
+                            comments: function() {
+                                return Projects.findOne({
+                                    _id: $stateParams.projectId
+                                }).comments;
+                            }*/
+        });
+
+
+        $scope.createReply = function(reply) {
+            $meteor.call('createReply', $stateParams.projectId, reply.content).then(function() {
+                reply.content = '';
+            }).catch(function(err) {
+                alert("An error occured while creating reply! " + err);
+            });
+        };
     });

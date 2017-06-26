@@ -105,6 +105,25 @@
 			<div class="page-container" ui-view>
 			</div>
 		</div>
+		<hr class="divider-d">
+		<footer class="footer bg-dark">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<p class="copyright font-logo">Tinkerer's Lab<span style="font-size: 18px;">, IITH</span></p>
+					</div>
+					<div class="col-sm-6">
+						<div class="footer-social-links"><a href="phoneto:+918179303345"><i class="fa fa-phone"></i></a><a href="mailto:tl@iith.ac.in"><i class="fa fa-envelope"></i></a><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<div class="scroll-up">
+			<a href="#totop"><i class="fa fa-angle-double-up"></i>
+			</a>
+		</div>
+
 	</main>
 	<script src="assets/lib/jquery/dist/jquery.js"></script>
 	<script src="assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -120,30 +139,5 @@
 	<script src="assets/js/plugins.js"></script>
 	<script src="assets/js/trix.js"></script>
 	<script src="dist/angular-trix.min.js"></script>
-	<!-- <script src="assets/js/main.js"></script> -->
-	<!-- <script type="text/javascript">
-		$(document).ready(function() {
-		    function navbarSubmenu(width) {
-		        if (width > 767) {
-		            $('.navbar-custom .navbar-nav > li.dropdown').hover(function() {
-		                var MenuLeftOffset = $('.dropdown-menu', $(this)).offset().left;
-		                var Menu1LevelWidth = $('.dropdown-menu', $(this)).width();
-		                if (width - MenuLeftOffset < Menu1LevelWidth * 2) {
-		                    $(this).children('.dropdown-menu').addClass('leftauto');
-		                } else {
-		                    $(this).children('.dropdown-menu').removeClass('leftauto');
-		                }
-		                if ($('.dropdown', $(this)).length > 0) {
-		                    var Menu2LevelWidth = $('.dropdown-menu', $(this)).width();
-		                    if (width - MenuLeftOffset - Menu1LevelWidth < Menu2LevelWidth) {
-		                        $(this).children('.dropdown-menu').addClass('left-side');
-		                    } else {
-		                        $(this).children('.dropdown-menu').removeClass('left-side');
-		                    }
-		                }
-		            });
-		        }
-		    }
-		});
-	</script> -->
+	
 </body>

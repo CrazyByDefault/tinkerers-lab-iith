@@ -3,6 +3,16 @@
 	<div class="container">
 		<div class="page">
 			<h1 class="module-title font-alt">Topics</h1>
+			<div class="row" ui-sref="projects">
+				<div class="col-xs-12 col-md-12 topic-text">
+					<div class="row">
+						<div class="col-sm-12">
+							<h3 class="module-title font-alt align-left"><a ui-sref="topic({topicId: topic._id})">Projects in progress</a></h3>
+							<div class="module-subtitle font-serif align-left" style="margin-bottom: 10px !important">Take a look at what's currently being built!</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="row" ng-repeat="topic in topics" ui-sref="topic({topicId: topic._id})">
 				<div class="col-xs-12 col-md-12 topic-text">
 					<div class="row">

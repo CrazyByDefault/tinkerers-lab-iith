@@ -27,3 +27,5 @@ accounts-google
 service-configuration
 jalik:ufs
 jalik:ufs-local
+angular:angular-animate
+ongoworks:google-spreadsheets

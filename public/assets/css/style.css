@@ -1,31 +1,79 @@
 /* Custom styles */
 
-.arrow-up {
-  width: 0; 
-  height: 0; 
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  
-  border-bottom: 10px solid black;
-}
-
-.arrow-down {
-  width: 0; 
-  height: 0; 
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  
-  border-top: 10px solid black;
-}
-
 .vote-box {
-  height: 100%;
-  /*display: flex;*/
-  float: right;
-  /*justify-content: right;*/
-  /*align-items: right; */
+  padding-top: 10px;
+  text-align: right;
+  display: inline-block !important;
+  position: relative !important;
 }
 
+.thumb-up, .thumb-down {
+  /*float: right;*/
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: auto;
+  width: 25px;
+  filter: saturate(0) brightness(0.2);
+  -webkit-transition: filter;
+  transition: filter .55s ease;
+}
+
+.thumb-up:hover, .thumb-down:hover {
+  filter: saturate(1) brightness(1);
+}
+
+.vote-count {
+  /*float: right;*/
+  margin-left: 5px;
+  margin-right: 5px;
+  display: inline-block;
+  /*margin: 10px 5px;*/
+}
+
+.replies{
+  -webkit-transition: 400ms ease all;
+  -moz-transition: 400ms ease all;
+  -ms-transition: 400ms ease all;
+  -o-transition: 400ms ease all;
+  transition: 400ms ease all;
+}
+
+.threads{
+  -webkit-transition: 400ms cubic-bezier(0.550, 0.085, 0.680, 0.530) all;
+  -moz-transition: 400ms cubic-bezier(0.550, 0.085, 0.680, 0.530) all;
+  -ms-transition: 400ms cubic-bezier(0.550, 0.085, 0.680, 0.530) all;
+  -o-transition: 400ms cubic-bezier(0.550, 0.085, 0.680, 0.530) all;
+  transition: 400ms cubic-bezier(0.550, 0.085, 0.680, 0.530) all;
+}
+ 
+.replies.ng-leave.ng-leave-active,
+.threads.ng-leave.ng-leave-active,
+.threads.ng-enter, .replies.ng-enter {
+    opacity: 0;
+    /*width: 0px;*/
+    /*height: 0px;*/
+}
+ 
+.replies.ng-enter.ng-enter-active, 
+.threads.ng-enter.ng-enter-active,
+.threads.ng-leave,
+.replies.ng-leave {
+    opacity: 1;
+    /*width: 150px;*/
+    /*height: 30px;*/
+}
+
+.font-logo {
+  letter-spacing: 1px !important;
+  font-family: 'Scope One', serif !important;
+  font-size: 22px;
+}
+
+.red-line {
+  width: 65%;
+  border-top: 1px solid #dd2222;
+  margin-top: 0; 
+}
 
 
 /*--------------------------------------------------------------
@@ -609,8 +657,8 @@ a,
 .scroll-up {
   position: fixed;
   display: none;
-  bottom: 7px;
-  right: 7px;
+  bottom: 16px;
+  right: 10px;
   z-index: 999;
 }
 
@@ -2937,7 +2985,7 @@ Google map
   }
   .copyright,
   .footer-social-links {
-    text-align: center;
+    text-align: center !important;
     margin: 10px 0;
   }
   /* Half-image */

@@ -2,10 +2,10 @@
     <div class="page">
         <div class="container">
             <link rel="stylesheet" type="text/css" href="assets/css/trix.css">
-            <div class="post-title">{{ thread.title }}</div>
-            <p>by {{ thread.author.profile.name }}<br>{{ thread.createdAt | date}}</p>
+            <div class="post-title">{{ project.title }}</div>
+            <p>by {{ project.author.profile.name }}<br>{{ project.createdAt | date}}</p>
             <hr style="border-bottom: 1px solid #aaa !important">
-            <p ng-bind-html="trustHtml(thread.content)"></p>
+            <p ng-bind-html="trustHtml(project.description)"></p>
         </div>
     </div>
 </section>
@@ -18,10 +18,10 @@
             <h4 class="comment-title font-alt">Replies</h4>
 
             <!-- This div is used if no replies are found -->
-            <div class="row pb-20 pt-40 font-alt align-center" ng-if="!thread.replies">
+            <div class="row pb-20 pt-40 font-alt align-center" ng-if="!project.replies">
                 <h4 style="text-transform: none !important">No replies here... yet. Go ahead, make one!</h4>
             </div>
-            <div class="comment clearfix replies" ng-repeat="reply in thread.replies">
+            <div class="comment clearfix replies" ng-repeat="reply in project.replies">
                 <div class="comment-avatar">
                     <img ng-src="{{reply.author.services.google.picture}}" alt="avatar"/>
                 </div>

@@ -1,42 +1,28 @@
 <section class="home-section home-full-height" id="home">
   <div class="hero-slider">
     <ul class="slides">
-      <li class="bg-dark-30" style="background-image:url(&quot;assets/images/photography/header.jpg&quot;);">
+      <li class="bg-dark-30" style="background-image:url(&quot;assets/images/photography/header1.jpg&quot;);">
         <div class="container">
           <div class="image-caption">
             <div class="font-alt caption-text">Placeholder image</div>
           </div>
         </div>
       </li>
-      <li class="bg-dark-30" style="background-image:url(&quot;assets/images/photography/header.jpg&quot;);">
+      <li class="bg-dark-30" style="background-image:url(&quot;assets/images/photography/header2.jpg&quot;);">
         <div class="container">
           <div class="image-caption">
             <div class="font-alt caption-text">Placeholder image</div>
           </div>
         </div>
       </li>
-      <li class="bg-dark-30" style="background-image:url(&quot;assets/images/photography/header.jpg&quot;);">
+      <li class="bg-dark-30" style="background-image:url(&quot;assets/images/photography/header3.jpg&quot;);">
         <div class="container">
           <div class="image-caption">
             <div class="font-alt caption-text">Placeholder image</div>
           </div>
         </div>
       </li>
-      <li class="bg-dark-30" style="background-image:url(&quot;assets/images/photography/header.jpg&quot;);">
-        <div class="container">
-          <div class="image-caption">
-            <div class="font-alt caption-text">Placeholder image</div>
-          </div>
-        </div>
-      </li>
-      <li class="bg-dark-30" style="background-image:url(&quot;assets/images/photography/header.jpg&quot;);">
-        <div class="container">
-          <div class="image-caption">
-            <div class="font-alt caption-text">Placeholder image</div>
-          </div>
-        </div>
-      </li>
-      <li class="bg-dark-30" style="background-image:url(&quot;assets/images/photography/header.jpg&quot;);">
+      <li class="bg-dark-30" style="background-image:url(&quot;assets/images/photography/header4.png&quot;);">
         <div class="container">
           <div class="image-caption">
             <div class="font-alt caption-text">Placeholder image</div>
@@ -45,10 +31,10 @@
       </li>
     </ul>
   </div>
-  <div class="titan-caption" style="position: absolute !important; z-index: 30; top: 0px;">
+  <div class="titan-caption" style="position: absolute !important; z-index: 30; top: 0px; pointer-events: none;">
     <div class="caption-content" style="color: #ffffff;">
       <div class="font-alt mb-20 titan-title-size-3">Tinkerer's Lab, IITH</div>
-      <div class="font-alt mb-20 titan-title-size-1">Tinkerer's Lab is IITH's 24/7 student-run lab which is awesome, lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis ac ipsum id efficitur. Phasellus.</div><a class="section-scroll btn btn-border-w btn-round" href="#services">Learn More</a>
+      <div class="font-alt mb-20 titan-title-size-1">Tinkerer's Lab is IITH's 24/7 student-run lab which is awesome, lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis ac ipsum id efficitur. Phasellus.</div><a class="section-scroll btn btn-border-w btn-round" href="#services" style="pointer-events: auto !important;">Learn More</a>
     </div>
   </div>
 </section>
@@ -57,7 +43,8 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-8 col-sm-offset-2">
-        <h2 class="module-title font-alt">Our Aim</h2>
+        <h2 class="module-title font-alt" style="margin-bottom: 20px !important;">Our Aim</h2>
+        <hr class="red-line">
         <div class="module-subtitle font-serif" style="margin-bottom: 5px !important;">Innovation is the outcome of a habit, not a random act.</div>
         <div class="module-subtitle">Here, at Tinkerer's Lab, our aim is to provide you with an open facility with a vast range of tools in order to bring out the inner tinkerer in you.</div>
       </div>
@@ -99,7 +86,8 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3">
-        <h2 class="module-title font-alt">Latest Blog Posts</h2>
+        <h2 class="module-title font-alt" style="margin-bottom: 20px !important;">Latest Blog Posts</h2>
+        <hr class="red-line">
         <div class="module-subtitle">Here's a collection of blog posts that document the most recent projects finished at Tinkerer's Lab.</div>
       </div>
     </div>
@@ -107,75 +95,20 @@
       <!-- <div class="col-md-3 col-sm-6 col-xs-12"> -->
       <div class="col-sm-6 col-md-4 col-lg-4" ng-repeat="blog in blogs | limitTo: 3">
         <div class="post mb-20">
-          <div class="post-thumbnail"><a href="#"><img src="assets/images/work-1.jpg" alt="Blog-post Thumbnail"/></a></div>
+          <div class="post-thumbnail"><a ui-sref="blog({ blogId: blog._id })"><img src="assets/images/work-1.jpg" alt="Blog-post Thumbnail"/></a></div>
           <div class="post-header font-alt">
-            <h2 class="post-title"><a href="#">{{ blog.name }}</a></h2>
-            <div class="post-meta">By&nbsp;<a href="#">{{ blog.author }}</a>&nbsp;| 23 November | 3 Comments
+            <h2 class="post-title"><a ui-sref="blog({ blogId: blog._id })">{{ blog.name }}</a></h2>
+            <div class="post-meta">By&nbsp;{{ blog.author }}&nbsp;| {{ createdAt | date }} | {{ blog.comments.length }} Comment{{ blog.comments.length == 1 ? '' : 's' }}
             </div>
           </div>
           <div class="post-entry">
             <p>{{ blog.description }}</p>
           </div>
-          <div class="post-more"><a class="more-link" href="#">Read more</a></div>
         </div>
       </div>
-      <!-- <div class="col-sm-6 col-md-4 col-lg-4">
-        <div class="post mb-20">
-          <div class="post-thumbnail"><a href="#"><img src="assets/images/work-1.jpg" alt="Blog-post Thumbnail"/></a></div>
-          <div class="post-header font-alt">
-            <h2 class="post-title"><a href="#">As Cool As Keyboards Can Get</a></h2>
-            <div class="post-meta">By&nbsp;<a href="#">Tom</a>&nbsp;| 23 November | 3 Comments
-            </div>
-          </div>
-          <div class="post-entry">
-            <p>I recently decided to get myself a mechanical keyboard. I looked everywhere I could, but no retail keyboard I could find was right for me - either the layout was wrong, or they didn't come in...</p>
-          </div>
-          <div class="post-more"><a class="more-link" href="#">Read more</a></div>
-        </div>
-      </div> -->
-      <!-- <div class="col-sm-6 col-md-4 col-lg-4">
-        <div class="post mb-20">
-          <div class="post-thumbnail"><a href="#"><img src="assets/images/work-2.jpg" alt="Blog-post Thumbnail"/></a></div>
-          <div class="post-header font-alt">
-            <h2 class="post-title"><a href="#">How many R-Pis are enough?</a></h2>
-            <div class="post-meta">By&nbsp;<a href="#">Andy River</a>&nbsp;| 11 November | 4 Comments
-            </div>
-          </div>
-          <div class="post-entry">
-            <p>What do you do when you need a machine that is more powerful than a single R-Pi, but not as powerful as a full PC? You put together as many R-Pis as you want. This is the account of how I built a cluster of...</p>
-          </div>
-          <div class="post-more"><a class="more-link" href="#">Read more</a></div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-4 col-lg-4">
-        <div class="post mb-20">
-          <div class="post-thumbnail"><a href="#"><img src="assets/images/work-3.jpg" alt="Blog-post Thumbnail"/></a></div>
-          <div class="post-header font-alt">
-            <h2 class="post-title"><a href="#">My door has a fingerprint sensor on it</a></h2>
-            <div class="post-meta">By&nbsp;<a href="#">Dylan Woods</a>&nbsp;| 5 November | 15 Comments
-            </div>
-          </div>
-          <div class="post-entry">
-            <p>Using fingerprints for authentication in the real world is not only safe, it's also convenient. Imagine a life where you can leave your keys behind and never worry about anything leaving your room.</p>
-          </div>
-          <div class="post-more"><a class="more-link" href="#">Read more</a></div>
-        </div>
-      </div> -->
     </div>
   </div>
 </section>
 
-<!-- <script src="assets/lib/jquery/dist/jquery.js"></script>
-<script src="assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="assets/lib/wow/dist/wow.js"></script>
-<script src="assets/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js"></script>
-<script src="assets/lib/isotope/dist/isotope.pkgd.js"></script>
-<script src="assets/lib/imagesloaded/imagesloaded.pkgd.js"></script>
-<script src="assets/lib/flexslider/jquery.flexslider.js"></script>
-<script src="assets/lib/owl.carousel/dist/owl.carousel.min.js"></script>
-<script src="assets/lib/smoothscroll.js"></script>
-<script src="assets/lib/magnific-popup/dist/jquery.magnific-popup.js"></script>
-<script src="assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js"></script>
-<script src="assets/js/plugins.js"></script> -->
 <script src="assets/js/plugins.js"></script>
 <script src="assets/js/main.js"></script>

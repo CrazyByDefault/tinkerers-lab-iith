@@ -1,14 +1,11 @@
 if (Topics.find().count() === 0) {
     _.each(
     	[{
-                name: 'General Discussion',
-                description: 'A place where you can discuss anything and everything'
+                name: 'Ideas Zone',
+                description: 'Discuss your project ideas here'
             }, {
-                name: 'Tutorials',
-                description: 'A place where you can learn stuff'
-            }, {
-            	name: 'Help',
-            	description: 'Need something? Ask here.'
+            	name: 'General Discussion',
+            	description: 'A place where you can discuss anything and everything'
         }],
         function(tempTopic) {
             Topics.insert({
@@ -66,6 +63,7 @@ if (Blogs.find().count() === 0) {
                 name: tempBlog.name,
                 author: tempBlog.author,
                 content: tempBlog.content,
+                createdAt: new Date(),
                 description: tempBlog.content.substring(0, 300),
                 comments: tempBlog.comments
             });
