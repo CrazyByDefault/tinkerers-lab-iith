@@ -272,6 +272,36 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix', 'ngAnimat
 
         });
 
+        $scope.trixBlur = function() {
+            angular.element(document.querySelector('trix-toolbar')).removeClass('ng-show')
+            angular.element(document.querySelector('trix-toolbar')).addClass('ng-hide')
+        }
+
+        $scope.trixFocus = function() {
+            angular.element(document.querySelector('trix-toolbar')).removeClass('ng-hide')
+            angular.element(document.querySelector('trix-toolbar')).addClass('ng-show')
+        }
+
+        $scope.projectDescrip = true;
+
+        $scope.nextPage = function() {
+            $scope.projectDescrip = false;
+        }
+
+        $scope.milestoneCount = 2;
+        $scope.addMilestone = function() {
+            $scope.milestoneCount++;
+        }
+
+        $scope.timeline = {
+            milestones: {},
+            deadlines: {}
+        };
+
+        $scope.getNumber = function(num) {
+            return new Array(num);
+        }
+
         $scope.castVote = function(threadId, vote) {
             $meteor.call("voteCaster", threadId, vote, 0).then(function() {
                 // TODO Do I need anything here?
@@ -281,12 +311,16 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix', 'ngAnimat
         }
 
         $scope.createProject = function(project) {
-            $meteor.call("createProject", project.title, project.description, project.timeline).then(function() {
+            console.log("Wtf?");
+            $meteor.call("createProject", project.title, project.description, $scope.timeline).then(function() {
                 project.title = '';
                 project.description = '';
-                project.timeline = '';
+                $scope.timeline = {
+                    milestones: {},
+                    deadlines: {}
+                };
             }).catch(function(err) {
-                alert("Somethin dun fucked up " + err);
+                alert("Error - " + err);
             });
         }
 

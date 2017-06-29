@@ -448,7 +448,7 @@ Meteor.methods({
     createProject: function(title, descrip, timeline) {
     	check(title, String);
     	check(descrip, String);
-        // check(timeline, Object);
+        check(timeline, Object);
 
         var user = Meteor.user();
 
