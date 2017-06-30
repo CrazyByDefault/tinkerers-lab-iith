@@ -59,11 +59,10 @@
 						</li>
 						<li><a ui-sref="blogs">Blog</a>
 						</li>
-						<li><a>About Us</a>
+						<li><a ui-sref="about" >About Us</a>
 						</li>
-						<li><a style="color: rgba(255, 255, 255, 0.7) !important;" data-toggle="modal" data-target="#notifModal">{{ currentUser.profile.name }} <span class="badge">{{ currentUser.profile.notifications.length === 0 ? '' : currentUser.profile.notifications.length }}</span></a></li>
-						<li><a ng-click="logInorOut()" >{{ availableAccountAction }}</a></li>
-						
+						<li><a href="" data-toggle="modal" data-target="#notifModal">{{ currentUser.profile.name }} <span class="badge">{{ currentUser.profile.notifications.length === 0 ? '' : currentUser.profile.notifications.length }}</span></a></li>
+						<li><a href="" ng-click="logInorOut()" >{{ availableAccountAction }}</a></li>
 					</ul>
 				</div>
 			</div>
@@ -125,19 +124,19 @@
 		</div>
 
 	</main>
-	<script src="assets/lib/jquery/dist/jquery.js"></script>
-	<script src="assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="assets/lib/wow/dist/wow.js"></script>
-	<script src="assets/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js"></script>
-	<script src="assets/lib/isotope/dist/isotope.pkgd.js"></script>
-	<script src="assets/lib/imagesloaded/imagesloaded.pkgd.js"></script>
-	<script src="assets/lib/flexslider/jquery.flexslider.js"></script>
-	<script src="assets/lib/owl.carousel/dist/owl.carousel.min.js"></script>
-	<script src="assets/lib/smoothscroll.js"></script>
-	<script src="assets/lib/magnific-popup/dist/jquery.magnific-popup.js"></script>
-	<script src="assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js"></script>
-	<script src="assets/js/plugins.js"></script>
-	<script src="assets/js/trix.js"></script>
+	<script async src="assets/lib/jquery/dist/jquery.js"></script>
+	<script async src="assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script async src="assets/lib/wow/dist/wow.js"></script>
+	<script async src="assets/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js"></script>
+	<script async src="assets/lib/isotope/dist/isotope.pkgd.js"></script>
+	<script async src="assets/lib/imagesloaded/imagesloaded.pkgd.js"></script>
+	<script async src="assets/lib/flexslider/jquery.flexslider.js"></script>
+	<script async src="assets/lib/owl.carousel/dist/owl.carousel.min.js"></script>
+	<script async src="assets/lib/smoothscroll.js"></script>
+	<script async src="assets/lib/magnific-popup/dist/jquery.magnific-popup.js"></script>
+	<script async src="assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js"></script>
+	<script async src="assets/js/plugins.js"></script>
+	<script async src="assets/js/trix.js"></script>
 	<script src="dist/angular-trix.min.js"></script>
 	
 </body>

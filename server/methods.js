@@ -471,5 +471,27 @@ Meteor.methods({
         	weight: 0
         };
         return Projects.insert(project);
+    },
+
+    // Create a request to be displayed on Admin Panel
+    createReq: function(reqType, req, reqSource) {
+        check(reqType, String);
+        check(req, String);
+        check(reqSource, String);
+
+        var user = Meteor.user();
+
+        if(!user){
+            throw Meteor.Error("Gotta be logged in to request resources.");
+        }
+
+        var request = {
+            type: reqType,
+            source: reqSource,
+            author: user,
+            requestText: req
+        }
+
+        return Requests.insert(request);
     }
 });

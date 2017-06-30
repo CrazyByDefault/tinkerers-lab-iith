@@ -13,7 +13,8 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix', 'ngAnimat
 
         $stateProvider.state('inventory', {
             url: '/inventory',
-            templateUrl: 'views/pages/inventory.html'
+            templateUrl: 'views/pages/inventory.html',
+            controller: 'InventoryController'
         });
 
         $stateProvider.state('blogs', {
@@ -58,6 +59,10 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix', 'ngAnimat
             controller: 'ThreadContoller'
         });
 
+        $stateProvider.state('about', {
+            url: '/about',
+            templateUrl: 'views/pages/about.html'
+        })
     })
     .run(function($state, $stateParams, $rootScope, $sce, $meteor) {
         // We inject $state here to initialize ui.router 
@@ -323,7 +328,6 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix', 'ngAnimat
                 alert("Error - " + err);
             });
         }
-
     })
     .controller('ProjectController', function($scope, $sce, $stateParams, $meteor) {
         $scope.subscribe('project', function() {
@@ -352,4 +356,24 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix', 'ngAnimat
                 alert("An error occured while creating reply! " + err);
             });
         };
+    })
+    .controller('InventoryController', function($scope, $meteor) {
+        $scope.elecHidden = true;
+        $scope.mechHidden = true;
+
+        $scope.toggleElec = function() {
+            $scope.elecHidden = !$scope.elecHidden;
+        }
+
+        $scope.toggleMech = function() {
+            $scope.mechHidden = !$scope.mechHidden;
+        }
+
+        $scope.createResourceReq = function(req) {
+            $meteor.call('createReq', 'resource', req, "inventory_page").then(function() {
+                $scope.req = '';
+            }).catch(function(err) {
+                alert("Error - " + err)
+            });
+        }
     });
