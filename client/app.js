@@ -75,6 +75,10 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix', 'ngAnimat
             },
         });
 
+        $rootScope.getNumber = function(num) {
+            return new Array(num);
+        }
+
         $rootScope.clearNotification = function(date) {
             console.log(date)
             $meteor.call("clearNotification", date).then(function() {
@@ -277,12 +281,12 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix', 'ngAnimat
 
         });
 
-        $scope.trixBlur = function() {
+        $scope.hideTrixTB = function() {
             angular.element(document.querySelector('trix-toolbar')).removeClass('ng-show')
             angular.element(document.querySelector('trix-toolbar')).addClass('ng-hide')
         }
 
-        $scope.trixFocus = function() {
+        $scope.showTrixTB = function() {
             angular.element(document.querySelector('trix-toolbar')).removeClass('ng-hide')
             angular.element(document.querySelector('trix-toolbar')).addClass('ng-show')
         }
@@ -299,13 +303,12 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix', 'ngAnimat
         }
 
         $scope.timeline = {
-            milestones: {},
-            deadlines: {}
+            milestones: {
+                milestone: {},
+                deadline: {},
+                status: {}
+            }
         };
-
-        $scope.getNumber = function(num) {
-            return new Array(num);
-        }
 
         $scope.castVote = function(threadId, vote) {
             $meteor.call("voteCaster", threadId, vote, 0).then(function() {
@@ -316,13 +319,14 @@ angular.module('forum', ['angular-meteor', 'ui.router', 'angularTrix', 'ngAnimat
         }
 
         $scope.createProject = function(project) {
-            console.log("Wtf?");
             $meteor.call("createProject", project.title, project.description, $scope.timeline).then(function() {
                 project.title = '';
                 project.description = '';
                 $scope.timeline = {
-                    milestones: {},
-                    deadlines: {}
+                    milestones: {
+                        milestone: {},
+                        deadline: {}
+                    }
                 };
             }).catch(function(err) {
                 alert("Error - " + err);
