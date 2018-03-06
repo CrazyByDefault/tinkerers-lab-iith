@@ -9,7 +9,7 @@
     "angular-trix": "^1.0.2",
     "angularjs-datepicker": "^2.1.23",
     "babel-runtime": "^6.20.0",
-    "bcrypt": "^1.0.2",
+    "bcryptjs": "^2.4.3",
     "desandro-matches-selector": "^2.0.2",
     "ev-emitter": "^1.1.0",
     "fizzy-ui-utils": "^2.0.5",
